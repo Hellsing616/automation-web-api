@@ -6,7 +6,11 @@ const elementos = {
 
   linkCarrinho: '.shop-menu > .nav > :nth-child(3) > a',
 
-  tabelaCarrinho: '#cart_items > :nth-child(1)'
+  tabelaCarrinho: '#cart_items > :nth-child(1)',
+
+  quantidadeProduto: '.cart_quantity',
+
+  deleteItemCarrinho: '.cart_quantity_delete'
 
 }
 

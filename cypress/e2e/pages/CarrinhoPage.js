@@ -31,17 +31,26 @@ class CarrinhoPage {
     cy.get(elementos.tabelaCarrinho)
       .should('be.visible')
       .invoke('text')
-      .then((texto) => {
-
-        console.log('Texto encontrado no carrinho:', texto)
-        console.log('Produto esperado:', produto)
-
+      .then((texto) => {        
         expect(texto).to.contain(produto)
 
       })
 
   }
 
+validarQuantidadeProduto(quantidade) {
+  cy.wait(1000) // Adiciona uma espera de 1 segundo para garantir que a quantidade seja atualizada
+  cy.get(elementos.quantidadeProduto)
+    .should('be.visible')
+    .invoke('text')
+    .then((texto) => {
+      
+      expect(texto.trim()).to.equal(quantidade)
+
+    })
+  cy.get(elementos.deleteItemCarrinho).click()
+
+}
 }
 
 export default CarrinhoPage

@@ -77,13 +77,13 @@ java -version
 Clone o projeto
 
 ```bash
-git clone https://github.com/SEU-USUARIO/automation-claro.git
+git clone https://github.com/SEU-USUARIO/automation-web-api.git
 ```
 
 Entre na pasta
 
 ```bash
-cd automation-claro
+cd automation-web
 ```
 
 Instale as dependências

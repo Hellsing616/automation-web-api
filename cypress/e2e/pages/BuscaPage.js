@@ -21,6 +21,8 @@ class BuscaPage {
   cy.get(elementos.botaoPesquisar)
     .should('be.visible')
     .click()
+
+  cy.wait(2000) // Adiciona uma espera de 1 segundo para garantir que os resultados sejam carregados  
   }
 
   validarResultados(produto) {

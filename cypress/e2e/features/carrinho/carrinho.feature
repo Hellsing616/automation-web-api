@@ -14,3 +14,5 @@ Feature: Incluir produto no carrinho
     And eu adiciono o produto "T-Shirt" ao carrinho
     Then o produto "T-Shirt" deve ser incluido no carrinho
     And a quantidade de produtos no carrinho deve ser "1"
+
+    
