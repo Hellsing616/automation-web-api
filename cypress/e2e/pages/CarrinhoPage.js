@@ -38,9 +38,36 @@ class CarrinhoPage {
 
   }
 
+limparCarrinho() {
+  cy.get('#cart_info_table tbody tr').then(($produtos) => {
+
+    if ($produtos.length > 0) {
+
+      cy.wrap($produtos.first())
+        .find('.cart_quantity_delete')
+        .click()
+        .then(() => {
+
+          if ($produtos.length > 1) {
+
+            cy.get('#cart_info_table tbody tr')
+              .should('have.length', $produtos.length - 1)
+              .then(() => {
+                this.limparCarrinho()
+              })
+
+          }
+
+        })
+    }
+
+  })
+}
+
 validarQuantidadeProduto(quantidade) {
   cy.wait(1000) // Adiciona uma espera de 1 segundo para garantir que a quantidade seja atualizada
   cy.get(elementos.quantidadeProduto)
+    .first()
     .should('be.visible')
     .invoke('text')
     .then((texto) => {
@@ -48,9 +75,9 @@ validarQuantidadeProduto(quantidade) {
       expect(texto.trim()).to.equal(quantidade)
 
     })
-  cy.get(elementos.deleteItemCarrinho).click()
-
-}
-}
+    .then(() => {
+      this.limparCarrinho()
+    })
+}}
 
 export default CarrinhoPage

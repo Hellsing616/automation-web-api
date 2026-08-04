@@ -8,6 +8,12 @@ class BuscaPage {
       .click()
   }
 
+  limparBusca() {
+  cy.get(elementos.campoPesquisa)
+    .should('be.visible')
+    .clear()
+  }
+
   pesquisarProduto(produto) {
     cy.get(elementos.campoPesquisa)
     .should('be.visible')

@@ -41,6 +41,7 @@ When('eu adiciono o produto {string} ao carrinho', (produto) => {
 })
 
 Then('o produto {string} deve ser incluido no carrinho', (produto) => {
+  
   carrinhoPage.acessarCarrinho()   
   carrinhoPage.validarProdutoNoCarrinho(produto)
 
@@ -49,5 +50,11 @@ Then('o produto {string} deve ser incluido no carrinho', (produto) => {
 Then('a quantidade de produtos no carrinho deve ser {string}', (quantidade) => {
 
   carrinhoPage.validarQuantidadeProduto(quantidade)
+
+})
+
+When('eu acesso o carrinho', () => {
+
+  carrinhoPage.acessarCarrinho()
 
 })
