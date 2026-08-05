@@ -34,12 +34,18 @@ Then('deve exibir o nome da lista', () => {
 });
 
 Then('deve retornar os dados principais da Action', () => {
+    
+    cy.salvarRespostaApi('consultar-action', response);
 
     expect(response.body).to.have.property('id');
     expect(response.body).to.have.property('type');
     expect(response.body).to.have.property('date');
     expect(response.body).to.have.property('data');
-    expect(response.body).to.have.property('memberCreator');
+
+    expect(response.body.data.list).to.have.property('name');
+    expect(response.body.data.board).to.have.property('name');
+    expect(response.body.data.card).to.have.property('name');
+    expect(response.body.memberCreator).to.have.property('username');
 
 });
 
