@@ -9,6 +9,7 @@ class BuscaPage {
   }
 
   pesquisarProduto(produto) {
+
     cy.get(elementos.campoPesquisa)
       .should('be.visible')
       .clear()
@@ -21,33 +22,10 @@ class BuscaPage {
     cy.get(elementos.botaoPesquisar)
       .should('be.visible')
       .click()
-
-    cy.wait(2000) // Adiciona uma espera de 1 segundo para garantir que os resultados sejam carregados  
   }
 
-  validarResultados(produto) {
-    cy.get(elementos.resultadoProduto)
-      .should('be.visible')
-      .invoke('text')
-      .then((texto) => {
-        expect(texto).to.contain(produto)
-      })
-  }
-
-  validarNenhumResultado() {
-
-    cy.get(elementos.resultadoProduto)
-      .should('not.exist')
-
-  }
-
-  validarBuscaSemFiltro() {
-
-    cy.url().should('include', '/products?search=')
-
-    cy.get(elementos.resultadoProduto)
-      .should('exist')
-
+  obterResultadoProduto() {
+    return cy.get('body').find(elementos.resultadoProduto)
   }
 
 }

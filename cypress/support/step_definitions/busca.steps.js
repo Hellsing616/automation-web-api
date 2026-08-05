@@ -24,10 +24,10 @@ Given('que estou na pagina inicial', () => {
     'eq',
     `${Cypress.config().baseUrl}/`
   )
+
 })
 
 When('o usuario pesquisa por {string}', (produto) => {
-  produtoPesquisado = produto
 
   buscaPage.acessarProdutos()
 
@@ -36,17 +36,33 @@ When('o usuario pesquisa por {string}', (produto) => {
 })
 
 Then('o produto {string} e apresentado na lista', (produto) => {
-  buscaPage.validarResultados(produto)
+
+  buscaPage
+    .obterResultadoProduto()
+    .should('be.visible')
+    .invoke('text')
+    .then((texto) => {
+
+      expect(texto).to.contain(produto)
+
+    })
+
 })
 
 Then('nenhum produto correspondente e apresentado na lista', () => {
 
-  buscaPage.validarNenhumResultado()
+  buscaPage
+    .obterResultadoProduto()
+    .should('not.exist')
 
 })
 
 Then('a busca e realizada sem filtro de produto', () => {
 
-  buscaPage.validarBuscaSemFiltro()
+  cy.url().should('include', '/products?search=')
+
+  buscaPage
+    .obterResultadoProduto()
+    .should('exist')
 
 })
