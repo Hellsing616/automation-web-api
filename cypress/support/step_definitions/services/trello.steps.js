@@ -4,10 +4,6 @@ import TrelloService from "../../../e2e/services/TrelloService";
 
 let response;
 
-Given('que possuo o endpoint da Action do Trello', () => {
-
-});
-
 When('realizo uma requisição GET da Action', () => {
 
     TrelloService.consultarAction()
