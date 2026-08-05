@@ -24,6 +24,7 @@ Given('eu estou na pagina inicial', () => {
     'eq',
     `${Cypress.config().baseUrl}/`
   )
+
 })
 
 When('eu busco pelo produto {string}', (produto) => {
@@ -34,22 +35,36 @@ When('eu busco pelo produto {string}', (produto) => {
 
 })
 
-When('eu adiciono o produto {string} ao carrinho', (produto) => {
+When('eu adiciono o produto {string} ao carrinho', () => {
 
-  carrinhoPage.adicionarProduto(produto)
+  carrinhoPage.adicionarProduto()
 
 })
 
 Then('o produto {string} deve ser incluido no carrinho', (produto) => {
 
   carrinhoPage.acessarCarrinho()
-  carrinhoPage.validarProdutoNoCarrinho(produto)
+
+  carrinhoPage
+    .obterProdutoCarrinho()
+    .should('be.visible')
+    .invoke('text')
+    .should('contain', produto)
 
 })
 
 Then('a quantidade de produtos no carrinho deve ser {string}', (quantidade) => {
 
-  carrinhoPage.validarQuantidadeProduto(quantidade)
+  carrinhoPage
+    .obterQuantidadeProduto()
+    .should('be.visible')
+    .should(($elemento) => {
+
+      expect($elemento.text().trim()).to.equal(quantidade)
+
+    })
+
+  carrinhoPage.limparCarrinho()
 
 })
 
