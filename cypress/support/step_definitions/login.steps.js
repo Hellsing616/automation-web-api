@@ -20,7 +20,7 @@ When('eu informo usuario e senha', () => {
 
 })
 
-Then('eu visualizo a pagina inicial', () => {  
+Then('eu visualizo a pagina inicial', () => {
   cy.env(['BASE_URL'])
     .then(({ BASE_URL }) => {
       `${Cypress.config().baseUrl}/products`

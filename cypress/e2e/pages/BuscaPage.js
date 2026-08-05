@@ -8,39 +8,33 @@ class BuscaPage {
       .click()
   }
 
-  limparBusca() {
-  cy.get(elementos.campoPesquisa)
-    .should('be.visible')
-    .clear()
-  }
-
   pesquisarProduto(produto) {
     cy.get(elementos.campoPesquisa)
-    .should('be.visible')
-    .clear()
+      .should('be.visible')
+      .clear()
 
-  if (produto !== '') {
-    cy.get(elementos.campoPesquisa)
-      .type(produto)
-  }
+    if (produto !== '') {
+      cy.get(elementos.campoPesquisa)
+        .type(produto)
+    }
 
-  cy.get(elementos.botaoPesquisar)
-    .should('be.visible')
-    .click()
+    cy.get(elementos.botaoPesquisar)
+      .should('be.visible')
+      .click()
 
-  cy.wait(2000) // Adiciona uma espera de 1 segundo para garantir que os resultados sejam carregados  
+    cy.wait(2000) // Adiciona uma espera de 1 segundo para garantir que os resultados sejam carregados  
   }
 
   validarResultados(produto) {
-  cy.get(elementos.resultadoProduto)
-    .should('be.visible')
-    .invoke('text')
-    .then((texto) => {
-      expect(texto).to.contain(produto)
-    })
-}
+    cy.get(elementos.resultadoProduto)
+      .should('be.visible')
+      .invoke('text')
+      .then((texto) => {
+        expect(texto).to.contain(produto)
+      })
+  }
 
-validarNenhumResultado() {
+  validarNenhumResultado() {
 
     cy.get(elementos.resultadoProduto)
       .should('not.exist')

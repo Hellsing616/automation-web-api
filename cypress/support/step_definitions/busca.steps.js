@@ -36,7 +36,7 @@ When('o usuario pesquisa por {string}', (produto) => {
 })
 
 Then('o produto {string} e apresentado na lista', (produto) => {
-    buscaPage.validarResultados(produto)
+  buscaPage.validarResultados(produto)
 })
 
 Then('nenhum produto correspondente e apresentado na lista', () => {

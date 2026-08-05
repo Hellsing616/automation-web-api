@@ -19,7 +19,7 @@ class LoginPage {
   }
 
   clicarLogin() {
-   cy.get(elementos.botaoLogin)
+    cy.get(elementos.botaoLogin)
       .should('be.visible')
       .click()
   }
