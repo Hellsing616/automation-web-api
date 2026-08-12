@@ -11,7 +11,7 @@ Feature: Busca de produtos
   Scenario Outline: Localizar produto pela busca
     When o usuario pesquisa por "<busca>"
     Then o produto "<produto>" e apresentado na lista
-
+    
     Examples:
       | busca      | produto    |
       | T-Shirts   | T-Shirts   |

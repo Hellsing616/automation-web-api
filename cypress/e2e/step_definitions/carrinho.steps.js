@@ -36,7 +36,7 @@ When('eu busco pelo produto {string}', (produto) => {
 })
 
 When('eu adiciono o produto {string} ao carrinho', () => {
-
+  cy.wait(2000) // Adicionando um tempo de espera para garantir que a página esteja carregada antes de clicar no botão
   carrinhoPage.adicionarProduto()
 
 })

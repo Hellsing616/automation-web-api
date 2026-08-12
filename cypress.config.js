@@ -35,8 +35,7 @@ module.exports = defineConfig({
 
     specPattern:
       "cypress/e2e/features/**/*.feature",
-
-
+    
     async setupNodeEvents(on, config) {
 
 

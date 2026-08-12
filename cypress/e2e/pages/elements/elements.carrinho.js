@@ -2,7 +2,7 @@ const elementos = {
 
   btClicarCarrinho: ':nth-child(5) > .product-image-wrapper > .single-products > .productinfo > .btn',
 
-  btConfirmarProdutoNoCarrinho: '.modal-footer > .btn',
+  btConfirmarProdutoNoCarrinho: ':nth-child(5) > .product-image-wrapper > .choose > .nav > li > a',
 
   linkCarrinho: '.shop-menu > .nav > :nth-child(3) > a',
 
