@@ -12,6 +12,8 @@ cypress/downloads/
 allure-results/
 allure-report/
 
+.DS_Store
+
 # Reports
 pdf-report/
 coverage/

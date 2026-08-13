@@ -8,6 +8,7 @@
     "allure:generate": "allure generate allure-results --clean -o allure-report",
     "allure:open": "allure open allure-report",
     "cy:smoke": "cypress run --env tags=@smoke",
+    "test:api": "cypress run --spec 'cypress/e2e/features/api/**/*.feature'",
     "cy:login": "cypress run --spec cypress/e2e/features/login/login.feature"
   },
   "devDependencies": {
